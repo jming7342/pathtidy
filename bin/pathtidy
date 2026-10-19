@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+source "$SCRIPT_DIR/../lib/utils.sh"
+source "$SCRIPT_DIR/../lib/dedup.sh"
+source "$SCRIPT_DIR/../lib/help.sh"
+source "$SCRIPT_DIR/../lib/list.sh"
+source "$SCRIPT_DIR/../lib/rm.sh"
+source "$SCRIPT_DIR/../lib/add.sh"
+
+case "$1" in
+    list)
+        do_list
+        ;;
+    dedup)
+        do_dedup
+        ;;
+    rm)
+        do_rm "${@:2}"
+        ;;
+    add)
+        do_add "${@:2}"
+        ;;
+    help|--help|-h)
+        do_help
+        ;;
+    "")
+        do_list
+        ;;
+    *)
+        echo "pathtidy: $1: command not found" >&2
+        do_help
+        exit 1
+        ;;
+esac
