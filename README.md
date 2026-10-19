@@ -92,7 +92,7 @@ pathtidy add 6 /b | pathtidy add 2 /a
 ## 依赖
 
 - bash 4.0+
-- Linux / macOS
+- Linux
 
 ## License
 
